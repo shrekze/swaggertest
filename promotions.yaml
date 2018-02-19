@@ -21,15 +21,15 @@ paths:
       summary: Get a list of service promotions
       description: Retrieve a list of service promotions
       parameters:
-        - $ref: 'promotions_parameters.yaml#/ban'
+        - $ref: './promotions_parameters.yaml#/ban'
       responses:
         200:
           description: Returns a list of service promotions.
           schema:
-            $ref: 'promotions_definitions.yaml#/Promos'
+            $ref: './promotions_definitions.yaml#/Promos'
         400:
-          $ref: 'promotions_responses.yaml#/RequestErrorResponse'
+          $ref: './promotions_responses.yaml#/RequestErrorResponse'
         500:
-          $ref: 'promotions_responses.yaml#/ServerErrorResponse'
+          $ref: './promotions_responses.yaml#/ServerErrorResponse'
         default:
-          $ref: 'promotions_responses.yaml#/UnknownResponse'
+          $ref: './promotions_responses.yaml#/UnknownResponse'
