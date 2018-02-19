@@ -1,0 +1,97 @@
+Promos:
+  type: array
+  items:
+    $ref: "#/Promo"
+Promo:
+  type: object
+  required: [ban, msisdn, promo-name, promo-code, evaluation-status, evaluation-status-reason, promo-window-start-date, promo-window-end-date, re-enrollment-date, un-enrollment-date, ]
+  properties:
+    ban:
+      type: integer
+      format: int32
+      minimum: 0
+      maximum: 999999999
+      description: BAN
+    msisdn:
+      type: string
+      pattern: "[A-Za-z0-9 :!\\.]*"
+      default: "0000000000"
+      minLength: 1
+      maxLength: 20
+      description: MSISDN
+    promo-name:
+      type: string
+      minLength: 0
+      maxLength: 500
+      description: service promotion name
+    promo-code:
+      type: string
+      minLength: 0
+      maxLength: 9
+      description: service promotion code
+    evaluation-status:
+      type: string
+      enum: [Active, Removed, Ineligible, Enrolled, Unenrolled]
+      description: service promotion status
+    evaluation-status-reason:
+      type: string
+      minLength: 0
+      maxLength: 150
+      description: service promotion status reason
+    promo-window-start-date:
+      type: string
+      pattern: "\d{1,2}/\d{1,2}/\d{4}"
+      example: "2/9/2018"
+      description: service promotion start date
+    promo-window-end-date:
+      type: string
+      pattern: "\d{1,2}/\d{1,2}/\d{4}"
+      default: "12/31/9999"
+      example: "3/3/2018"
+      description: service promotion end date
+    re-enrollment-date:
+      type: string
+      pattern: "\d{1,2}/\d{1,2}/\d{4} \d{1,2}:\d{1,2}"
+      example: "2/9/2018 22:09"
+      description: service promotion re-enrollment date
+    un-enrollment-date:
+      type: string
+      pattern: "\d{1,2}/\d{1,2}/\d{4} \d{1,2}:\d{1,2}"
+      example: "2/9/2018 22:09"
+      description: service promotion un-enrollment date
+    bo-lines:
+      type: array
+      items:
+        $ref: "#/offer-line"
+    go-lines:
+      type: array
+      items:
+        $ref: "#/offer-line"
+offer-line:
+  type: object
+  required: [msisdn, initiation-date, bo-line-socs]
+  properties:
+    msisdn: 
+      type: string
+      pattern: "[A-Za-z0-9 :!\\.]*"
+      default: "0000000000"
+      minLength: 1
+      maxLength: 20
+      description: MSISDN
+    initiation-date:
+      type: string
+      pattern: "\d{1,2}/\d{1,2}/\d{4}"
+      example: "2/9/2018"
+      description: BO initiation date
+    bo-line-socs:
+      type: string
+      minLength: 0
+      maxLength: 9
+      example: "FRAALT2"
+      description: BO SOCs
+Error:
+  properties:
+    code:
+      type: integer
+    message:
+      type: string

@@ -1,0 +1,9 @@
+ban:
+  name: ban
+  in: path
+  description: Talk identifier
+  type: integer
+  format: int32
+  minimum: 0
+  maximum: 999999999
+  required: true
